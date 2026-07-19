@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lina Délices | عالم الحلويات الفاخرة</title>
+    <style>
+        /* إعدادات الخطوط والألوان العامة */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary-color: #ff769f; /* الوردي الجذاب للحلويات */
+            --secondary-color: #fff0f5; /* خلفية وردية ناعمة */
+            --dark-color: #4a2c3a; /* بني داكن للنصوص */
+            --white: #ffffff;
+            --facebook-color: #1877f2;
+            --instagram-color: #e1306c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth; /* تمرير سلس عند الضغط على الروابط */
+        }
+
+        body {
+            background-color: #fafafa;
+            color: var(--dark-color);
+        }
+
+        /* الهيدر وشريط التنقل */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* القسم الرئيسي (البانر) */
+        .hero {
+            background: linear-gradient(rgba(255, 240, 245, 0.8), rgba(255, 240, 245, 0.8)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e05580;
+            transform: scale(1.05);
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* قسم اتصل بنا الجديد */
+        .contact-section {
+            background-color: var(--secondary-color);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .contact-phone {
+            background-color: #2ecc71; /* اللون الأخضر للاتصال */
+        }
+
+        .contact-instagram {
+            background-color: var(--instagram-color);
+        }
+
+        .contact-facebook {
+            background-color: var(--facebook-color);
+        }
+
+        /* الفوتر (أسفل الصفحة) */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* التوافق مع الهواتف */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .contact-links {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Lina Délices</a>
+            <ul class="nav-links">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#products">حلوياتنا</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>مرحباً بكم في Lina Délices</h1>
+        <p>نصنع لكم ألذ الحلويات الفاخرة بأجود المكونات وطعم لا يُنسى ليشارككم في كل مناسباتكم السعيدة.</p>
+        <a href="#products" class="btn">تصفح القائمة</a>
+    </section>
+
+    <section class="products-section" id="products">
+        <h2 class="section-title">أشهر مبيعاتنا</h2>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="750892989_1663739064706828_8252939646228006668_n.jpg" alt="كعيكات" class="product-img">
+                
+                <div class="product-info">
+                    <h3>كعيكات بطلية</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src= "748231153_1706759383896471_3389868073954906373_n.jpg" alt="بقلاوة جزائرية" class="product-img">
+                <div class="product-info">
+                    <h3>بقلاوة جزائرية</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="748043584_1554249966407788_8135153563701867861_n.jpg" alt="ماكارون" class="product-img">
+                <div class="product-info">
+                    <h3>ثومة الجزائرية</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="748763399_1013841654800042_3802903854033883311_n.jpg" alt="قريوش  " class="product-img">
+                
+                <div class="product-info">
+                    <h3>قريوش</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src= "753006692_4780543902179719_2518007447185020944_n.jpg" alt="" class="product-img">
+                <div class="product-info">
+                    <h3>فاكهة</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="gggggg.jpg" alt="ماكارون" class="product-img">
+                <div class="product-info">
+                    <h3>دزيريات</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="748763399_1800216164472101_1841752760081743554_n.jpg" alt="" class="product-img">
+                
+                <div class="product-info">
+                    <h3>صابلي </h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src= "jjjjjjjjjjjjjjjjjjjjjjjjjjjj.jpg"alt="بقلاوة جزائرية" class="product-img">
+                <div class="product-info">
+                    <h3>صابلي برستيج</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="mmmmmmmmmm.jpg" alt="ماكارون" class="product-img">
+                <div class="product-info">
+                    <h3>مقروط</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="sssssssss.jpg" alt="كعيكات" class="product-img">
+                
+                <div class="product-info">
+                    <h3>مقروط اللوز</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src= "vvvvvvvvvvvvvv.jpg" alt="بقلاوة جزائرية" class="product-img">
+                <div class="product-info">
+                    <h3>بوكس مشكل</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="kjhgfd.jpg" alt="ماكارون" class="product-img">
+                <div class="product-info">
+                    <h3>تشراك العريان</h3>
+                    
+                    <span class="price">اتصل بنا</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">اتصل بنا</h2>
+        <div class="contact-container">
+            <p class="contact-text">يسعدنا تواصلكم معنا للطلب أو الاستفسار عبر وسائل التواصل التالية:</p>
+            
+            <div class="contact-links">
+                <a href="tel:+213555555555" class="contact-item contact-phone">
+                    <span>📞 0781814024:اتصل بنا:</span>
+                </a>
+
+                <a href="https://instagram.com/lina_delices15" target="_blank" class="contact-item contact-instagram">
+                    <span>📸 تابعنا على إنستغرام</span>
+                </a>
+
+                <a href="https://www.facebook.com/61566918817352/
+" target="_blank" class="contact-item contact-facebook">
+                    <span>👤 تابعنا على فيسبوك</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لـ Lina Délices. صُنع بكل حب 🍰</p>
+    </footer>
+
+</body>
+</html>
